@@ -1,0 +1,50 @@
+﻿@model user
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Register</h2>
+<form >
+    <table cellpadding="30">
+        <tr>
+            <td>@Html.LabelFor(n => n.firstName)</td>
+            <td>@Html.TextBoxFor(n => n.firstName)</td>
+            <td>@Html.ValidationMessageFor(n => n.firstName)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(n => n.lastName)</td>
+            <td>@Html.TextBoxFor(n => n.lastName)</td>
+            <td>@Html.ValidationMessageFor(n => n.lastName)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(n => n.dataOfBirth)</td>
+            <td>@Html.TextBoxFor(n => n.dataOfBirth)</td>
+            <td>@Html.ValidationMessageFor(n => n.dataOfBirth)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(n => n.phone)</td>
+            <td>@Html.TextBoxFor(n => n.phone)</td>
+            <td>@Html.ValidationMessageFor(n => n.phone)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(n => n.email)</td>
+            <td>@Html.TextBoxFor(n => n.email)</td>
+            <td>@Html.ValidationMessageFor(n => n.email)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(n => n.password)</td>
+            <td>@Html.TextBoxFor(n => n.password)</td>
+            <td>@Html.ValidationMessageFor(n => n.password)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(n => n.confirmPassword)</td>
+            <td>@Html.TextBoxFor(n => n.confirmPassword)</td>
+            <td>@Html.ValidationMessageFor(n => n.confirmPassword)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input value="register" type="submit" /></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
