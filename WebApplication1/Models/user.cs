@@ -21,6 +21,7 @@ namespace WebApplication1.Models
 
         [Key]
         [StringLength(50)]
+
         public string username { get; set; }
 
         public int phone { get; set; }
