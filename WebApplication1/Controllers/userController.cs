@@ -11,13 +11,18 @@ namespace WebApplication1.Controllers
     {
         // GET: user
         DollarContext db = new DollarContext();
-        public ActionResult Index()
+        public ActionResult register()
         {
             return View();
         }
+        public ActionResult newUser(user newGuy)
+        {
+            db.users.Add(newGuy);
+            db.SaveChanges();
+            return RedirectToAction("signIn");
+        }
         public ActionResult signIn()
         {
-
             return View();
         }
     }

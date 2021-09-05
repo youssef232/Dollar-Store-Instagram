@@ -176,7 +176,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\user\Index.cshtml" />
+    <Content Include="Views\user\register.cshtml" />
     <Content Include="Views\user\signIn.cshtml" />
   </ItemGroup>
   <ItemGroup>

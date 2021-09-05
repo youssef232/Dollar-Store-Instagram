@@ -9,12 +9,13 @@ namespace WebApplication1.Models
     [Table("user")]
     public partial class user
     {
-        [Required]
+        [Required(ErrorMessage ="*")]
         [Display(Name = "first name")]
         [StringLength(50)]
+        
         public string firstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="*")]
         [Display(Name = "last name")]
         [StringLength(50)]
         public string lastName { get; set; }
@@ -28,6 +29,7 @@ namespace WebApplication1.Models
 
         [Required]
         [StringLength(50)]
+        [RegularExpression(@"^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$", ErrorMessage ="invailid email")]
         public string email { get; set; }
 
         [Required]
@@ -37,6 +39,7 @@ namespace WebApplication1.Models
         [NotMapped]
         [Required]
         [StringLength(50)]
+        [Compare("password", ErrorMessage ="password don't match")]
         [Display(Name ="confirm password")]
         public string confirmPassword { get; set; }
 
