@@ -15,11 +15,16 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
-        public ActionResult newUser(user newGuy)
+        [HttpPost]
+        public ActionResult register(user newGuy, HttpPostedFileBase img)
         {
-            db.users.Add(newGuy);
-            db.SaveChanges();
-            return RedirectToAction("signIn");
+            img.SaveAs(Server.MapPath("~/attach/" + img.FileName));
+            newGuy.userPhoto = img.FileName;
+            
+                db.users.Add(newGuy);
+                db.SaveChanges();
+                return RedirectToAction("signIn");
+         
         }
         public ActionResult signIn()
         {

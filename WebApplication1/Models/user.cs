@@ -10,25 +10,28 @@ namespace WebApplication1.Models
     public partial class user
     {
         [Required(ErrorMessage ="*")]
-        [Display(Name = "first name")]
+        [Display(Name = "First Name")]
         [StringLength(50)]
         
         public string firstName { get; set; }
 
         [Required(ErrorMessage ="*")]
-        [Display(Name = "last name")]
+        [Display(Name = "Last Name")]
         [StringLength(50)]
         public string lastName { get; set; }
 
         [Key]
         [StringLength(50)]
+        [Display(Name = "Username")]
 
         public string username { get; set; }
+        [Display(Name = "Phone")]
 
         public int phone { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name ="Email")]
         [RegularExpression(@"^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$", ErrorMessage ="invailid email")]
         public string email { get; set; }
 
@@ -40,11 +43,15 @@ namespace WebApplication1.Models
         [Required]
         [StringLength(50)]
         [Compare("password", ErrorMessage ="password don't match")]
-        [Display(Name ="confirm password")]
+        [Display(Name ="Confirm Password")]
         public string confirmPassword { get; set; }
 
-        [Column(TypeName = "date")]
-        [Display(Name ="date of birth")]
-        public DateTime dataOfBirth { get; set; }
+        [Column(TypeName = "datetime")]
+        [Display(Name ="Date of Birth")]
+        public DateTime dateOfBirth { get; set; }
+
+        [Required(ErrorMessage = "*")]
+        [Display(Name = "Profile Picture")]
+        public string userPhoto { get; set; }
     }
 }
