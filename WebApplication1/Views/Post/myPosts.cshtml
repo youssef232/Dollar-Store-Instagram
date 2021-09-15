@@ -1,0 +1,23 @@
+﻿@model List<post>
+@{
+    ViewBag.Title = "myPosts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Posts</h2>
+
+@foreach (var item in Model)
+{
+    <div style="text-align: left; font-size: 24px; color:#433c3c; font-weight: bold">
+        @item.postContent
+        <br/>
+        <br/>
+        <br/>
+    </div>
+    <div style="text-align: center;">
+        @if (item.photo != null)
+                {
+                    <div width="30%"> <img src="@item.photo" width="400" height="400" /> </div>
+                }
+    </div>
+}

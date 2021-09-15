@@ -26,9 +26,28 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("signIn");
          
         }
-        public ActionResult signIn()
+        public ActionResult signIn(user newUser)
         {
+            user temp = db.users.Where(n=> n.username == newUser.username && n.password == newUser.password).FirstOrDefault();
+            if (temp != null)
+            {
+                Session.Add("username", temp.username);
+                return RedirectToAction("profile");
+            }
+            
             return View();
+        }
+        public ActionResult profile()
+        {
+            if (Session["username"] == null) return RedirectToAction("signIn");
+            string username = (string)Session["username"];
+            user s = db.users.Where(n => n.username == username).FirstOrDefault();
+            return View(s);
+        }
+        public ActionResult signOut()
+        {
+            Session["username"] = null;
+            return RedirectToAction("signIn");
         }
     }
 }

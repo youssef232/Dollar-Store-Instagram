@@ -1,0 +1,31 @@
+﻿@model post
+@{
+    ViewBag.Title = "addPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Post</h2>
+<h4>tell us what's in your mind</h4>
+<form method="post" enctype="multipart/form-data">
+    <table width="100%">
+        <tr>
+            <td>@Html.LabelFor(n => n.postContent)</td>
+            <td>@Html.TextBoxFor(n => n.postContent, new { @class = "form-control" })</td>
+            <td><br /></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(n => n.photo)</td>
+            <td><input type="file" name="img" /></td>
+            <td><br /></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(n => n.categoryName)</td>
+            <td>@Html.DropDownListFor(n => n.categoryName, (SelectList)ViewBag.categoryList, new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td> <input type="submit" value="save" class="btn btn-primary" /> </td>
+            <td></td>
+        </tr>
+    </table>
+</form>

@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - Dollar Store Instagram</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -16,15 +17,28 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Dollar Store Instagram", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Dollar Store Instagram", "allPosts", "post", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" >
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Sign in ", "signIn", "user")</li>
-                    <li>@Html.ActionLink("Register", "register", "user")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Home", "allPosts", "post")</li>
+                    @if (Session["username"] == null)
+                    {
+                        <li>@Html.ActionLink("Sign in ", "signIn", "user")</li>
+                        <li>@Html.ActionLink("Register", "register", "user")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Categories", "category", "Post")</li>
+                        <li>@Html.ActionLink("Write a post", "addPost", "Post")</li>
+                        <li>@Html.ActionLink("My Posts", "myPosts", "Post")</li>
+                        <li>@Html.ActionLink("Profile", "profile", "user")</li>
+                        <li>@Html.ActionLink("Sign Out", "signOut", "user")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                    }
                 </ul>
             </div>
         </div>
@@ -42,3 +56,4 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+

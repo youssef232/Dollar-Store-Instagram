@@ -10,7 +10,7 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("allPosts", "post");
         }
 
         public ActionResult About()
@@ -24,10 +24,6 @@ namespace WebApplication1.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
-        public ActionResult trash()
-        {
             return View();
         }
 

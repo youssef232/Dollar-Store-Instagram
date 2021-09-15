@@ -1,0 +1,43 @@
+﻿@model user
+@{
+    ViewBag.Title = "profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> welcome @Model.username </h2>
+<table width="100%" style="font-size:20px;">
+    <tr>
+        <td>
+            Full name: @Model.firstName @Model.lastName
+            <br /> <br />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            E-mail: @Model.email
+            <br /> <br />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Age: @(DateTime.Now.Year-Model.dateOfBirth.Year) years old
+            <br />
+            <br />
+        </td>
+     </tr>
+    <tr>
+        <td>
+            <img src="~/attach/@Model.userPhoto" width="200" height="200" />
+            <br />
+            <br />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Phone: @Model.phone
+            <br />
+            <br />
+        </td>
+    </tr>
+</table>
+

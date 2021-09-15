@@ -18,8 +18,13 @@ namespace WebApplication1.Models
 
         public int postID { get; set; }
 
-        public int catID { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string categoryName { get; set; }
 
         public string photo { get; set; }
+        public DateTime date {  get; set; }
+
+        public virtual category category { get; set; }
     }
 }

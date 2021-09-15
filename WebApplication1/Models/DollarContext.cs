@@ -8,7 +8,7 @@ namespace WebApplication1.Models
     public partial class DollarContext : DbContext
     {
         public DollarContext()
-            : base("name=DollarContext")
+            : base("name=DollarContext2")
         {
         }
 
@@ -19,6 +19,10 @@ namespace WebApplication1.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<category>()
+                .HasMany(e => e.posts)
+                .WithRequired(e => e.category)
+                .WillCascadeOnDelete(false);
         }
     }
 }

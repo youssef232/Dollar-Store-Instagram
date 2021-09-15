@@ -5,7 +5,7 @@
 
 <h2>Register</h2>
 <br />
-<form  method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data">
 
     <div>
         @Html.LabelFor(n => n.firstName)
@@ -28,12 +28,12 @@
     <br />
     <div>
         @Html.LabelFor(n => n.userPhoto)
-        <input type="file" name="img"/>
+        <input type="file" name="img" />
     </div>
 
     <div>
         @Html.LabelFor(n => n.dateOfBirth)<br />
-        <input type="date" name="dateOfBirth" size="40"/>
+        <input type="date" name="dateOfBirth" size="40" />
         @Html.ValidationMessageFor(n => n.dateOfBirth)
     </div>
 
@@ -64,7 +64,7 @@
         @Html.ValidationMessageFor(n => n.confirmPassword)
     </div>
     <br />
-   
+
     <div>
 
         <input value="register" type="submit" class="btn btn-primary" />
@@ -72,3 +72,10 @@
     </div>
 
 </form>
+
+@section scripts{
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+}

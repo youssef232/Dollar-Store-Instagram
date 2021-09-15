@@ -9,13 +9,20 @@ namespace WebApplication1.Models
     [Table("category")]
     public partial class category
     {
-        public int categoryID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public category()
+        {
+            posts = new HashSet<post>();
+        }
 
-        [Required]
+        [Key]
         [StringLength(50)]
         public string categoryName { get; set; }
 
         [Required]
         public string categoryAbout { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<post> posts { get; set; }
     }
 }
