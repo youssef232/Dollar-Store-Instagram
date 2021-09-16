@@ -56,18 +56,6 @@ namespace WebApplication1.Controllers
         }
         public ActionResult categories()
         {
-            //category tempFood = db.categories.Where(n=> n.categoryName == "food").FirstOrDefault();
-            //ViewBag.tempFood = tempFood;
-            //category tempSport = db.categories.Where(n=> n.categoryName == "sport").FirstOrDefault();
-            //ViewBag.tempSport = tempSport;
-            //category tempArt = db.categories.Where(n => n.categoryName == "art").FirstOrDefault();
-            //ViewBag.tempArt = tempArt;
-            //category tempBuildings = db.categories.Where(n => n.categoryName == "buildings").FirstOrDefault();
-            //ViewBag.tempBuildings = tempBuildings;
-            //category tempCars = db.categories.Where(n => n.categoryName == "cars").FirstOrDefault();
-            //ViewBag.tempCars = tempCars;
-            //category tempLandscapes = db.categories.Where(n => n.categoryName == "landscapes").FirstOrDefault();
-            //ViewBag.tempLandscapes = tempLandscapes;
             return View(db.categories.ToList());
         }
         public ActionResult specificCategory(string categoryName)

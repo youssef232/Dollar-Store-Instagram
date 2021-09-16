@@ -49,5 +49,11 @@ namespace WebApplication1.Controllers
             Session["username"] = null;
             return RedirectToAction("signIn");
         }
+         public ActionResult edit(string username)
+        {
+            user tempUser = db.users.Where(n => n.username == username).FirstOrDefault();
+            //ViewBag.tempUser = tempUser;
+            return View(tempUser);
+        }
     }
 }

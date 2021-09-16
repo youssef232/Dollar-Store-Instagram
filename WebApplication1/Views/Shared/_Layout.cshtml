@@ -22,6 +22,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "allPosts", "post")</li>
+                    <li>@Html.ActionLink("Categories", "categories", "Post")</li>
                     @if (Session["username"] == null)
                     {
                         <li>@Html.ActionLink("Sign in ", "signIn", "user")</li>
@@ -31,7 +32,7 @@
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Categories", "categories", "Post")</li>
+
                         <li>@Html.ActionLink("Write a post", "addPost", "Post")</li>
                         <li>@Html.ActionLink("My Posts", "myPosts", "Post")</li>
                         <li>@Html.ActionLink("Profile", "profile", "user")</li>
