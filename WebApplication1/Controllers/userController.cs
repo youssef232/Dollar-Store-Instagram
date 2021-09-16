@@ -52,8 +52,18 @@ namespace WebApplication1.Controllers
          public ActionResult edit(string username)
         {
             user tempUser = db.users.Where(n => n.username == username).FirstOrDefault();
-            //ViewBag.tempUser = tempUser;
             return View(tempUser);
+        }
+        [HttpPost]
+       
+        public ActionResult edit(user newGuy, HttpPostedFileBase img)
+        {
+            img.SaveAs(Server.MapPath("~/attach/" + img.FileName));
+            newGuy.userPhoto = img.FileName;
+            db.Entry(newGuy).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("signIn");
+
         }
     }
 }

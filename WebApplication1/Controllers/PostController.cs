@@ -63,5 +63,21 @@ namespace WebApplication1.Controllers
                ViewBag.categoryName = categoryName;
             return View(db.posts.ToList());
         }
+        public ActionResult edit(int postId)
+        {
+           post tempPost = db.posts.Where(n=> n.postID == postId).FirstOrDefault();
+            return View(postId);
+        }
+        [HttpPost]
+
+        public ActionResult edit(user newGuy, HttpPostedFileBase img)
+        {
+            img.SaveAs(Server.MapPath("~/attach/" + img.FileName));
+            newGuy.userPhoto = img.FileName;
+            db.Entry(newGuy).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("signIn");
+
+        }
     }
 }
