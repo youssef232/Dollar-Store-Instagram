@@ -8,7 +8,11 @@
 
 @foreach (var item in Model)
 {
+    <div style="text-align:right">
+        <h6>@item.date</h6>
+    </div>
     <div style="text-align: left; font-size: 24px; color:#433c3c; font-weight: bold">
+        
         @item.postContent
         <br/>
         <br/>
@@ -20,4 +24,12 @@
                     <div width="30%"> <img src="@item.photo" width="400" height="400" /> </div>
                 }
     </div>
+    <div style="text-align: right; font-size: 24px; color:red; font-weight: bolder">
+        @Html.ActionLink("read more ..", "details", new { postId = item.postID }) /
+        @Html.ActionLink("delete", "delete", new { postId = item.postID })
+    </div>
+    <div>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    </div>
+
 }

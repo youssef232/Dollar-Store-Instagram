@@ -40,10 +40,40 @@ namespace WebApplication1.Controllers
         {
             return View(db.posts.ToList());
         }
-        public ActionResult details(string username)
+        public ActionResult details(int postId)
         {
-            post allDetailsOfThePost = db.posts.Where(n => n.writerUsername == username).FirstOrDefault();
+            
+            post allDetailsOfThePost = db.posts.Where(n => n.postID == postId).FirstOrDefault();
             return View(allDetailsOfThePost);
+        }
+        public ActionResult delete(int postId)
+        {
+            
+            post postIdInTheDataBase = db.posts.Where(n=>n.postID == postId).FirstOrDefault();  
+            db.posts.Remove(postIdInTheDataBase);
+            db.SaveChanges();
+            return RedirectToAction("myPosts");
+        }
+        public ActionResult categories()
+        {
+            //category tempFood = db.categories.Where(n=> n.categoryName == "food").FirstOrDefault();
+            //ViewBag.tempFood = tempFood;
+            //category tempSport = db.categories.Where(n=> n.categoryName == "sport").FirstOrDefault();
+            //ViewBag.tempSport = tempSport;
+            //category tempArt = db.categories.Where(n => n.categoryName == "art").FirstOrDefault();
+            //ViewBag.tempArt = tempArt;
+            //category tempBuildings = db.categories.Where(n => n.categoryName == "buildings").FirstOrDefault();
+            //ViewBag.tempBuildings = tempBuildings;
+            //category tempCars = db.categories.Where(n => n.categoryName == "cars").FirstOrDefault();
+            //ViewBag.tempCars = tempCars;
+            //category tempLandscapes = db.categories.Where(n => n.categoryName == "landscapes").FirstOrDefault();
+            //ViewBag.tempLandscapes = tempLandscapes;
+            return View(db.categories.ToList());
+        }
+        public ActionResult specificCategory(string categoryName)
+        {
+               ViewBag.categoryName = categoryName;
+            return View(db.posts.ToList());
         }
     }
 }

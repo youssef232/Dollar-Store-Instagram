@@ -1,0 +1,62 @@
+﻿@model List<category>
+@{
+    ViewBag.Title = "categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Categories of Posts</h2>
+
+@foreach (var item in Model)
+{
+    <div>
+        <h2>@Html.ActionLink(item.categoryName, "specificCategory", new { categoryName = item.categoryName })</h2>
+
+        <table width="100%">
+            <tr>
+                <td width="70%" style=" font-size:18px;">@item.categoryAbout</td>
+                <td width="30%">
+                    @if (item.categoryName == "food")
+                    {
+                        <img src="~/attach/logoPhotos/food logo.png" width="200" height="200" />
+                    }
+                    else if (item.categoryName == "art")
+                    {
+                        <img src="~/attach/logoPhotos/art logo.jpg" width="200" height="200" />
+                    }
+                    else if (item.categoryName == "sport")
+                    {
+                        <img src="~/attach/logoPhotos/sport logo.png" width="200" height="200" />
+                    }
+                    else if (item.categoryName == "buildings")
+                    {
+                        <img src="~/attach/logoPhotos/buildings logo.jpg" width="200" height="200" />
+                    }
+                    else if (item.categoryName == "landscapes")
+                    {
+
+
+                        <img src="~/attach/logoPhotos/landscaping logo.jpg" width="200" height="200" />
+                    }
+                    else
+                    {
+                        <img src="~/attach/logoPhotos/car logo.jpg" width="200" height="200"/>
+                    }
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+@*@Html.ActionLink(item.categoryName, "specificCategory", new { categoryName = item.categoryName })
+<br />
+<p style="tab-size: 20;">
+    @item.categoryAbout
+</p>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    //trying*@
+

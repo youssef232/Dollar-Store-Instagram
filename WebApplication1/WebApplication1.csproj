@@ -142,6 +142,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="attach\logoPhotos\art logo.jpg" />
+    <Content Include="attach\logoPhotos\buildings logo.jpg" />
+    <Content Include="attach\logoPhotos\car logo.jpg" />
+    <Content Include="attach\logoPhotos\food logo.png" />
+    <Content Include="attach\logoPhotos\landscaping logo.jpg" />
+    <Content Include="attach\logoPhotos\sport logo.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -186,6 +192,8 @@
     <Content Include="Views\Post\myPosts.cshtml" />
     <Content Include="Views\Post\allPosts.cshtml" />
     <Content Include="Views\Post\details.cshtml" />
+    <Content Include="Views\Post\categories.cshtml" />
+    <Content Include="Views\Post\specificCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

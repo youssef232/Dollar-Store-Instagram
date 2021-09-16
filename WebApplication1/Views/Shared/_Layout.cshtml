@@ -6,10 +6,10 @@
     <title>@ViewBag.Title - Dollar Store Instagram</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+   
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#000000">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -19,7 +19,7 @@
                 </button>
                 @Html.ActionLink("Dollar Store Instagram", "allPosts", "post", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse" >
+            <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "allPosts", "post")</li>
                     @if (Session["username"] == null)
@@ -31,7 +31,7 @@
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Categories", "category", "Post")</li>
+                        <li>@Html.ActionLink("Categories", "categories", "Post")</li>
                         <li>@Html.ActionLink("Write a post", "addPost", "Post")</li>
                         <li>@Html.ActionLink("My Posts", "myPosts", "Post")</li>
                         <li>@Html.ActionLink("Profile", "profile", "user")</li>
@@ -40,12 +40,16 @@
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                     }
                 </ul>
+                
             </div>
+
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
+      
         <footer>
             <p>&copy; @DateTime.Now.Year - by berket elsabaa Geeks</p>
         </footer>
