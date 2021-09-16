@@ -26,6 +26,11 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("signIn");
          
         }
+        public ActionResult signIn()
+        {
+            return View();
+        }
+        [HttpPost]
         public ActionResult signIn(user newUser)
         {
             user temp = db.users.Where(n=> n.username == newUser.username && n.password == newUser.password).FirstOrDefault();
@@ -34,8 +39,13 @@ namespace WebApplication1.Controllers
                 Session.Add("username", temp.username);
                 return RedirectToAction("profile");
             }
+            else
+            {
+                ViewBag.status = "incorrect username or password";
+                return View();
+            }
+
             
-            return View();
         }
         public ActionResult profile()
         {
@@ -58,12 +68,13 @@ namespace WebApplication1.Controllers
        
         public ActionResult edit(user newGuy, HttpPostedFileBase img)
         {
+           
             img.SaveAs(Server.MapPath("~/attach/" + img.FileName));
             newGuy.userPhoto = img.FileName;
             db.Entry(newGuy).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("signIn");
-
+            return RedirectToAction("profile");
+            
         }
     }
 }

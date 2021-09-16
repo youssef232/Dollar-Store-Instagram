@@ -65,19 +65,23 @@ namespace WebApplication1.Controllers
         }
         public ActionResult edit(int postId)
         {
-           post tempPost = db.posts.Where(n=> n.postID == postId).FirstOrDefault();
-            return View(postId);
+            if (Session["username"] == null) return RedirectToAction("signIn", "user");
+            SelectList categoryList = new SelectList(db.categories.ToList(), "categoryName", "categoryName");
+            ViewBag.categoryList = categoryList;
+            post temp = db.posts.Where(n=>n.postID == postId).FirstOrDefault();
+            return View(temp);
         }
         [HttpPost]
-
-        public ActionResult edit(user newGuy, HttpPostedFileBase img)
+        public ActionResult edit(post temp, HttpPostedFileBase img)
         {
-            img.SaveAs(Server.MapPath("~/attach/" + img.FileName));
-            newGuy.userPhoto = img.FileName;
-            db.Entry(newGuy).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("signIn");
+            img.SaveAs(Server.MapPath($"~/attach/postsPhoto/{img.FileName}"));
+            temp.photo = $"/attach/postsPhoto/{img.FileName}";
 
+            temp.writerUsername = (string)Session["username"];
+            temp.date = DateTime.Now;
+            db.Entry(temp).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("myPosts");
         }
     }
 }

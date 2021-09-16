@@ -195,6 +195,7 @@
     <Content Include="Views\Post\categories.cshtml" />
     <Content Include="Views\Post\specificCategory.cshtml" />
     <Content Include="Views\user\edit.cshtml" />
+    <Content Include="Views\Post\edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
