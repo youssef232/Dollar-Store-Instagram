@@ -20,11 +20,11 @@ namespace WebApplication1.Controllers
         {
             img.SaveAs(Server.MapPath("~/attach/" + img.FileName));
             newGuy.userPhoto = img.FileName;
-            
-                db.users.Add(newGuy);
-                db.SaveChanges();
-                return RedirectToAction("signIn");
-         
+
+            db.users.Add(newGuy);
+            db.SaveChanges();
+            return RedirectToAction("signIn");
+
         }
         public ActionResult signIn()
         {
@@ -33,7 +33,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult signIn(user newUser)
         {
-            user temp = db.users.Where(n=> n.username == newUser.username && n.password == newUser.password).FirstOrDefault();
+            user temp = db.users.Where(n => n.username == newUser.username && n.password == newUser.password).FirstOrDefault();
             if (temp != null)
             {
                 Session.Add("username", temp.username);
@@ -45,7 +45,7 @@ namespace WebApplication1.Controllers
                 return View();
             }
 
-            
+
         }
         public ActionResult profile()
         {
@@ -59,22 +59,27 @@ namespace WebApplication1.Controllers
             Session["username"] = null;
             return RedirectToAction("signIn");
         }
-         public ActionResult edit(string username)
+        public ActionResult edit(string username)
         {
             user tempUser = db.users.Where(n => n.username == username).FirstOrDefault();
             return View(tempUser);
         }
         [HttpPost]
-       
+
         public ActionResult edit(user newGuy, HttpPostedFileBase img)
         {
-           
+
             img.SaveAs(Server.MapPath("~/attach/" + img.FileName));
             newGuy.userPhoto = img.FileName;
             db.Entry(newGuy).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("profile");
-            
+
+        }
+        public ActionResult viewAnotherUserProfile(string username)
+        {
+            user temp = db.users.Where(n=> n.username == username).FirstOrDefault();
+            return View(temp);
         }
     }
 }

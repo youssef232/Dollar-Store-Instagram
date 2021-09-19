@@ -36,9 +36,15 @@
                         <li>@Html.ActionLink("Write a post", "addPost", "Post")</li>
                         <li>@Html.ActionLink("My Posts", "myPosts", "Post")</li>
                         <li>@Html.ActionLink("Profile", "profile", "user")</li>
+                            if ((string)Session["username"] == "admin" || (string)Session["username"] == "youssef232")
+                        {
+                            <li>@Html.ActionLink("Dashboard", "dashboard", "admin")</li>
+                            <li>@Html.ActionLink("Users info", "usersBrief", "admin")</li>
+                        }
                         <li>@Html.ActionLink("Sign Out", "signOut", "user")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
+
                     }
                 </ul>
                 
