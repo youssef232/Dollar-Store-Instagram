@@ -39,9 +39,11 @@ namespace WebApplication1.Models
         [Display(Name = "confirm password")]
         [Compare("password", ErrorMessage = "password not match")]
         public string confirmPassword { get; set; }
+        [Display(Name = "date of birth")]
         public DateTime dateOfBirth { get; set; }
 
         [Required]
+        [Display(Name = "user's photo")]
         public string userPhoto { get; set; }
     }
 }

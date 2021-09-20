@@ -28,7 +28,7 @@
             <td>Date:@Model.date</td>
             <td></td>
             <td>
-                Author:@Model.writerUsername
+                Author: @Html.ActionLink(@Model.writerUsername, "viewAnotherUserProfile", "user", new { username = Model.writerUsername }, null)
             </td>
         </tr>
     </table>
